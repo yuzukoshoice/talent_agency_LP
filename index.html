@@ -104,13 +104,11 @@
     </header>
 
     <!-- Hero Section -->
-    <!-- overflow-hiddenを削除して、スクロールボタンが枠外にはみ出せるように変更 -->
     <section class="relative min-h-screen flex items-center justify-center py-24 md:py-0">
         
-        <!-- 背景と装飾をまとめるラッパー（ここにはoverflow-hiddenをつけて横スクロール防止） -->
+        <!-- 背景と装飾をまとめるラッパー -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed"></div>
-            <!-- Decoration circles -->
             <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
             <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style="animation-delay: 1s;"></div>
         </div>
@@ -135,7 +133,6 @@
                 </a>
 
                 <!-- Scroll Indicator (Mobile Only) -->
-                <!-- スマホ版ではテキストの直下に表示 -->
                 <div class="flex flex-col items-center gap-2 opacity-60 md:hidden">
                     <span class="text-[10px] tracking-widest text-vertical h-12">SCROLL</span>
                     <div class="w-[1px] h-12 bg-gray-400"></div>
@@ -146,11 +143,9 @@
             <div class="md:w-1/2 relative flex items-center justify-center fade-in-up" style="transition-delay: 0.2s;">
                 <div class="relative w-64 md:w-80 h-80 md:h-[500px]">
                     <img src="/api/placeholder/600/800" alt="Model" class="w-full h-full object-cover shadow-2xl brightness-105 contrast-95 bg-gray-200">
-                    <!-- Placeholder Text Overlay -->
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
                         <span class="text-4xl font-serif text-gray-500">Main Visual</span>
                     </div>
-                    
                     <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-white p-4 shadow-lg hidden md:block">
                         <img src="/api/placeholder/400/400" alt="Model Detail" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 bg-gray-300">
                     </div>
@@ -158,9 +153,8 @@
             </div>
         </div>
 
-        <!-- Scroll Indicator (PC Only) -->
-        <!-- マイナスの値を設定して、次のセクションに大きく被る位置まで下げる(-12 -> -24) -->
-        <div class="absolute -bottom-0 left-1/2 transform -translate-x-1/2 flex-col items-center gap-2 opacity-60 hidden md:flex z-20">
+        <!-- Scroll Indicator (PC Only: -bottom-24) -->
+        <div class="absolute -bottom-24 left-1/2 transform -translate-x-1/2 flex-col items-center gap-2 opacity-60 hidden md:flex z-20">
             <span class="text-[10px] tracking-widest text-vertical h-12">SCROLL</span>
             <div class="w-[1px] h-12 bg-gray-400"></div>
         </div>
@@ -176,7 +170,6 @@
                     清潔感という余韻。
                 </h2>
                 <div class="w-12 h-[1px] bg-brand-gold mx-auto mb-10"></div>
-                <!-- 中央揃えに統一 (text-justifyをやめてtext-centerに) -->
                 <p class="text-gray-600 leading-loose text-center font-light">
                     情報が溢れる現代において、人々の心に深く残るのは<br class="hidden md:inline">
                     作り込まれた派手さよりも、内側から滲み出る「透明感」だと私たちは考えます。<br><br>
@@ -191,7 +184,7 @@
         </div>
     </section>
 
-    <!-- Talents Section: Alternating Layout -->
+    <!-- Talents Section -->
     <section id="talents" class="py-24 bg-brand-base relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full watercolor-bg"></div>
         
@@ -209,7 +202,7 @@
                     <div class="w-full md:w-1/2">
                         <div class="relative overflow-hidden aspect-[3/4] shadow-xl bg-white">
                             <img src="/api/placeholder/600/800" alt="Talent A" class="w-full h-full object-cover hover-zoom-img bg-gray-200">
-                            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-brand-base z-10 hidden md:block"></div> <!-- Decorative cutout -->
+                            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-brand-base z-10 hidden md:block"></div>
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-center md:text-left">
@@ -243,7 +236,7 @@
                     <div class="w-full md:w-1/2">
                         <div class="relative overflow-hidden aspect-[3/4] shadow-xl bg-white">
                             <img src="/api/placeholder/600/800" alt="Talent B" class="w-full h-full object-cover hover-zoom-img bg-gray-200">
-                             <div class="absolute -top-6 -left-6 w-24 h-24 bg-brand-base z-10 hidden md:block"></div> <!-- Decorative cutout -->
+                             <div class="absolute -top-6 -left-6 w-24 h-24 bg-brand-base z-10 hidden md:block"></div>
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-center md:text-left">
@@ -256,6 +249,7 @@
                                 クールな表情から愛らしい笑顔まで、幅広い表現力が魅力。<br>
                                 ランウェイでの存在感は随一。
                             </p>
+                            <!-- 順番を修正: 右揃えでも Height → 数値 の順に表示 -->
                             <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:ml-auto md:mr-0 border-t border-gray-200 pt-6 w-full">
                                 <div class="flex justify-between md:justify-end gap-4 border-b border-gray-100 pb-2 w-full">
                                     <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Height</dt><dd>168cm</dd>
@@ -267,8 +261,8 @@
                                     <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Hobby</dt><dd>Yoga</dd>
                                 </div>
                             </dl>
-                            <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all flex-row-reverse">
-                                <i data-lucide="arrow-right" class="w-4 h-4 rotate-180 md:rotate-0"></i> View Profile
+                            <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all">
+                                View Profile <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>
@@ -326,6 +320,7 @@
                                 知的な一面もあり、クイズ番組などでも活躍。<br>
                                 どんな現場も明るくするムードメーカー。
                             </p>
+                            <!-- 順番を修正: 右揃えでも Height → 数値 の順に表示 -->
                              <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:ml-auto md:mr-0 border-t border-gray-200 pt-6 w-full">
                                 <div class="flex justify-between md:justify-end gap-4 border-b border-gray-100 pb-2 w-full">
                                     <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Height</dt><dd>165cm</dd>
@@ -337,8 +332,8 @@
                                     <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Hobby</dt><dd>Cooking</dd>
                                 </div>
                             </dl>
-                            <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all flex-row-reverse">
-                                <i data-lucide="arrow-right" class="w-4 h-4 rotate-180 md:rotate-0"></i> View Profile
+                            <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all">
+                                View Profile <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>
@@ -387,3 +382,143 @@
             </div>
         </div>
     </section>
+
+    <!-- For Clients / Service -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2 fade-in-up">
+                    <img src="/api/placeholder/800/600" alt="Office Meeting" class="w-full h-auto grayscale opacity-80 shadow-xl bg-gray-200">
+                </div>
+                <div class="w-full md:w-1/2 fade-in-up" style="transition-delay: 0.2s;">
+                    <h2 class="font-serif text-3xl text-brand-dark mb-6 tracking-wider">制作・キャスティング担当者様へ</h2>
+                    <p class="text-gray-600 mb-8 leading-loose font-light">
+                        テレビ番組、CM、映画、WEB広告、イベントなど、<br>
+                        あらゆるシーンにおけるキャスティングを承っております。<br><br>
+                        急なスケジュールのご相談や、<br>
+                        オーディション形式での選考にも柔軟に対応可能です。<br>
+                        コンポジットの送付依頼もお気軽にお申し付けください。<br>
+                        企画の意図を汲み取り、最適な人材をご提案いたします。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 border border-gray-100 text-center">
+                            <span class="block text-brand-accent mb-2"><i data-lucide="tv" class="w-6 h-6 mx-auto"></i></span>
+                            <span class="text-sm text-gray-600 font-medium">TV / Drama</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 border border-gray-100 text-center">
+                            <span class="block text-brand-accent mb-2"><i data-lucide="video" class="w-6 h-6 mx-auto"></i></span>
+                            <span class="text-sm text-gray-600 font-medium">CM / Movie</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 border border-gray-100 text-center">
+                            <span class="block text-brand-accent mb-2"><i data-lucide="camera" class="w-6 h-6 mx-auto"></i></span>
+                            <span class="text-sm text-gray-600 font-medium">Model / Magazine</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 border border-gray-100 text-center">
+                            <span class="block text-brand-accent mb-2"><i data-lucide="mic-2" class="w-6 h-6 mx-auto"></i></span>
+                            <span class="text-sm text-gray-600 font-medium">Event / Reporter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section (Simple List) -->
+    <section id="news" class="py-24 bg-brand-base">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="font-serif text-3xl text-center text-brand-dark mb-12 tracking-wider">Latest News</h2>
+            <div class="bg-white p-8 shadow-sm fade-in-up">
+                <article class="border-b border-gray-100 py-4 flex flex-col md:flex-row gap-2 md:gap-8 items-start md:items-center hover:bg-gray-50 transition-colors cursor-pointer group">
+                    <time class="text-xs text-gray-400 font-mono">2023.10.20</time>
+                    <span class="bg-brand-dark text-white text-[10px] px-2 py-0.5 min-w-[60px] text-center">出演情報</span>
+                    <h3 class="text-sm md:text-base text-gray-700 group-hover:text-brand-accent transition-colors">橘 玲奈がドラマ「〇〇〇〇」第3話にゲスト出演いたします。</h3>
+                </article>
+                <article class="border-b border-gray-100 py-4 flex flex-col md:flex-row gap-2 md:gap-8 items-start md:items-center hover:bg-gray-50 transition-colors cursor-pointer group">
+                    <time class="text-xs text-gray-400 font-mono">2023.10.15</time>
+                    <span class="bg-brand-dark text-white text-[10px] px-2 py-0.5 min-w-[60px] text-center">出演情報</span>
+                    <h3 class="text-sm md:text-base text-gray-700 group-hover:text-brand-accent transition-colors">藤井 咲良が「△△製薬」の新CMキャラクターに決定いたしました。</h3>
+                </article>
+                <article class="border-b border-gray-100 py-4 flex flex-col md:flex-row gap-2 md:gap-8 items-start md:items-center hover:bg-gray-50 transition-colors cursor-pointer group">
+                    <time class="text-xs text-gray-400 font-mono">2023.10.01</time>
+                    <span class="bg-brand-gold text-white text-[10px] px-2 py-0.5 min-w-[60px] text-center">お知らせ</span>
+                    <h3 class="text-sm md:text-base text-gray-700 group-hover:text-brand-accent transition-colors">新人タレントオーディションの募集を開始いたしました。</h3>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute right-0 bottom-0 w-64 h-64 bg-brand-accent/10 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-6 text-center relative z-10 fade-in-up">
+            <h2 class="font-serif text-3xl md:text-4xl text-brand-dark mb-6 tracking-wider">Contact Us</h2>
+            <p class="text-gray-600 mb-10 font-light">
+                出演依頼、取材、オーディションなどのお問い合わせは<br>
+                以下のフォームより承っております。
+            </p>
+            
+            <a href="https://forms.google.com/your-form-url" target="_blank" class="inline-block bg-brand-dark text-white font-medium px-12 py-4 tracking-widest hover:bg-brand-accent transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                お問い合わせフォームへ
+            </a>
+            
+            <p class="text-xs text-gray-400 mt-6">
+                ※外部のGoogleフォームへ移動します。<br>
+                ※内容により返信にお時間をいただく場合がございます。
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white py-12 border-t border-gray-700">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <span class="font-serif text-2xl tracking-widest block mb-2">SAMPLE</span>
+                <span class="text-xs text-gray-400 tracking-[0.2em] uppercase">Management Office</span>
+            </div>
+            
+            <div class="flex gap-6 text-xs text-gray-400 tracking-wide">
+                <a href="#" class="hover:text-white transition-colors">会社概要</a>
+                <a href="#" class="hover:text-white transition-colors">プライバシーポリシー</a>
+                <a href="#" class="hover:text-white transition-colors">お問い合わせ</a>
+            </div>
+
+            <p class="text-xs text-gray-500 font-mono tracking-wider">
+                &copy; 2023 SAMPLE MANAGEMENT.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Icon initialization
+        lucide.createIcons();
+
+        // Fade In Animation
+        const fadeElements = document.querySelectorAll('.fade-in-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Header Transparency on Scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md', 'bg-white/95');
+                header.classList.remove('bg-white/90');
+            } else {
+                header.classList.remove('shadow-md', 'bg-white/95');
+                header.classList.add('bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>
