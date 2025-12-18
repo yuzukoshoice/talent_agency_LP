@@ -73,6 +73,11 @@
             filter: blur(40px);
             opacity: 0.6;
         }
+
+        /* モーダル表示時のスクロール禁止 */
+        body.modal-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="font-sans text-brand-main bg-brand-base tracking-wide antialiased">
@@ -206,15 +211,15 @@
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-center md:text-left">
-                        <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">ACTOR / MODEL</span>
-                        <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">橘 玲奈</h3>
-                        <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Rena Tachibana</p>
-                        <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-left">
+                        <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block job-title">ACTOR / MODEL</span>
+                        <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4 talent-name">橘 玲奈</h3>
+                        <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif en-name">Rena Tachibana</p>
+                        <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-left desc">
                             透明感あふれる演技で、視聴者を魅了する実力派女優。<br>
                             ドラマ、映画だけでなく、ナレーションなど声の仕事でも活躍中。<br>
                             飾らない人柄と、芯の強さを併せ持つ。
                         </p>
-                        <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6">
+                        <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6 specs">
                             <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
                                 <dt class="font-serif text-gray-400 w-20">Height</dt><dd>162cm</dd>
                             </div>
@@ -225,9 +230,9 @@
                                 <dt class="font-serif text-gray-400 w-20">Hobby</dt><dd>Reading</dd>
                             </div>
                         </dl>
-                        <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all">
+                        <button onclick="openProfile(this)" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all cursor-pointer">
                             View Profile <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -241,29 +246,29 @@
                     </div>
                     <div class="w-full md:w-1/2 text-center md:text-left">
                          <div class="md:flex md:flex-col md:items-end md:text-right">
-                            <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">MODEL</span>
-                            <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">星野 湊</h3>
-                            <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Minato Hoshino</p>
-                            <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-right">
+                            <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block job-title">MODEL</span>
+                            <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4 talent-name">星野 湊</h3>
+                            <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif en-name">Minato Hoshino</p>
+                            <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-right desc">
                                 圧倒的なスタイルと表現力で、数々のファッション誌を飾る。<br>
                                 クールな表情から愛らしい笑顔まで、幅広い表現力が魅力。<br>
                                 ランウェイでの存在感は随一。
                             </p>
                             <!-- 順番を修正: 右揃えでも Height → 数値 の順に表示 -->
-                            <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:ml-auto md:mr-0 border-t border-gray-200 pt-6 w-full text-left">
+                            <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:ml-auto md:mr-0 border-t border-gray-200 pt-6 w-full text-left specs">
                                 <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
-                                    <dt class="font-serif text-gray-400 w-20">Height</dt><dd>168cm</dd>
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Height</dt><dd>168cm</dd>
                                 </div>
                                 <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
-                                    <dt class="font-serif text-gray-400 w-20">Birthplace</dt><dd>Osaka</dd>
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Birthplace</dt><dd>Osaka</dd>
                                 </div>
                                 <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
-                                    <dt class="font-serif text-gray-400 w-20">Hobby</dt><dd>Yoga</dd>
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Hobby</dt><dd>Yoga</dd>
                                 </div>
                             </dl>
-                            <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all flex-row-reverse">
+                            <button onclick="openProfile(this)" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all flex-row-reverse cursor-pointer">
                                 <i data-lucide="arrow-right" class="w-4 h-4 rotate-180 md:rotate-0"></i> View Profile
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -277,15 +282,15 @@
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-center md:text-left">
-                        <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">ACTOR</span>
-                        <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">白石 琴音</h3>
-                        <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Kotone Shiraishi</p>
-                        <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-left">
+                        <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block job-title">ACTOR</span>
+                        <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4 talent-name">白石 琴音</h3>
+                        <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif en-name">Kotone Shiraishi</p>
+                        <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-left desc">
                             等身大の演技が同世代からの共感を呼ぶ。<br>
                             舞台での経験も豊富で、確かな演技力が持ち味。<br>
                             CM、MVなど映像作品への出演も多数。
                         </p>
-                         <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6">
+                         <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6 specs">
                             <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
                                 <dt class="font-serif text-gray-400 w-20">Height</dt><dd>158cm</dd>
                             </div>
@@ -296,9 +301,9 @@
                                 <dt class="font-serif text-gray-400 w-20">Hobby</dt><dd>Camera</dd>
                             </div>
                         </dl>
-                        <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all">
+                        <button onclick="openProfile(this)" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all cursor-pointer">
                             View Profile <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -312,29 +317,29 @@
                     </div>
                      <div class="w-full md:w-1/2 text-center md:text-left">
                          <div class="md:flex md:flex-col md:items-end md:text-right">
-                            <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">MODEL / REPORTER</span>
-                            <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">藤井 咲良</h3>
-                            <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Sakura Fujii</p>
-                            <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-right">
+                            <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block job-title">MODEL / REPORTER</span>
+                            <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4 talent-name">藤井 咲良</h3>
+                            <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif en-name">Sakura Fujii</p>
+                            <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-right desc">
                                 親しみやすいキャラクターと笑顔で、情報番組のリポーターとしても人気。<br>
                                 知的な一面もあり、クイズ番組などでも活躍。<br>
                                 どんな現場も明るくするムードメーカー。
                             </p>
                             <!-- 順番を修正: 右揃えでも Height → 数値 の順に表示 -->
-                             <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:ml-auto md:mr-0 border-t border-gray-200 pt-6 w-full text-left">
+                             <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:ml-auto md:mr-0 border-t border-gray-200 pt-6 w-full text-left specs">
                                 <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
-                                    <dt class="font-serif text-gray-400 w-20">Height</dt><dd>165cm</dd>
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Height</dt><dd>165cm</dd>
                                 </div>
                                 <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
-                                    <dt class="font-serif text-gray-400 w-20">Birthplace</dt><dd>Hokkaido</dd>
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Birthplace</dt><dd>Hokkaido</dd>
                                 </div>
                                 <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
-                                    <dt class="font-serif text-gray-400 w-20">Hobby</dt><dd>Cooking</dd>
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Hobby</dt><dd>Cooking</dd>
                                 </div>
                             </dl>
-                            <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all flex-row-reverse">
+                            <button onclick="openProfile(this)" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all flex-row-reverse cursor-pointer">
                                 <i data-lucide="arrow-right" class="w-4 h-4 rotate-180 md:rotate-0"></i> View Profile
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -348,15 +353,15 @@
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-center md:text-left">
-                        <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">ACTOR</span>
-                        <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">南 遥香</h3>
-                        <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Haruka Minami</p>
-                        <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-left">
+                        <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block job-title">ACTOR</span>
+                        <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4 talent-name">南 遥香</h3>
+                        <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif en-name">Haruka Minami</p>
+                        <p class="text-gray-600 leading-loose font-light mb-8 text-center md:text-left desc">
                             独特の存在感を放つ個性派。<br>
                             シリアスからコメディまで演じ分ける器用さを持ち、<br>
                             クリエイターからの指名も多い注目の逸材。
                         </p>
-                         <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6">
+                         <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6 specs">
                             <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
                                 <dt class="font-serif text-gray-400 w-20">Height</dt><dd>160cm</dd>
                             </div>
@@ -367,19 +372,15 @@
                                 <dt class="font-serif text-gray-400 w-20">Hobby</dt><dd>Music</dd>
                             </div>
                         </dl>
-                        <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all">
+                        <button onclick="openProfile(this)" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all cursor-pointer">
                             View Profile <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
 
             </div>
             
-            <div class="text-center mt-24">
-                 <a href="#" class="inline-block border border-brand-dark px-12 py-4 text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-300 tracking-widest text-sm">
-                    VIEW ALL TALENTS
-                </a>
-            </div>
+            <!-- VIEW ALL TALENTS button removed -->
         </div>
     </section>
 
@@ -488,6 +489,54 @@
         </div>
     </footer>
 
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeProfile()"></div>
+        <div class="bg-white w-full max-w-5xl mx-4 md:mx-auto h-[90vh] md:h-auto md:max-h-[90vh] overflow-y-auto relative shadow-2xl flex flex-col md:flex-row transform scale-95 transition-transform duration-300 rounded-lg overflow-hidden" id="modal-content">
+            <button class="absolute top-4 right-4 z-10 text-gray-500 hover:text-black p-2 bg-white/50 rounded-full md:bg-transparent" onclick="closeProfile()">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <!-- Modal Image -->
+            <div class="w-full md:w-5/12 h-64 md:h-auto relative bg-gray-100 shrink-0">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+            </div>
+            <!-- Modal Info -->
+            <div class="w-full md:w-7/12 p-8 md:p-12 bg-white">
+                <span id="modal-job" class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block"></span>
+                <h3 id="modal-name" class="font-serif text-3xl md:text-4xl text-brand-dark mb-2"></h3>
+                <p id="modal-en-name" class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif"></p>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h4 class="font-serif text-lg text-brand-dark mb-4 border-b border-brand-gold pb-2 inline-block">Profile</h4>
+                        <p id="modal-desc" class="text-gray-600 leading-loose font-light text-sm md:text-base"></p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-serif text-lg text-brand-dark mb-4 border-b border-brand-gold pb-2 inline-block">Spec</h4>
+                        <dl id="modal-specs" class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-500"></dl>
+                    </div>
+
+                    <div>
+                        <h4 class="font-serif text-lg text-brand-dark mb-4 border-b border-brand-gold pb-2 inline-block">Biography</h4>
+                        <p class="text-gray-600 leading-loose font-light text-sm">
+                            2020年、モデルとしてキャリアをスタート。<br>
+                            雑誌「SAMPLE」の専属モデルを経て、2022年にドラマ「架空の物語」で女優デビュー。<br>
+                            透明感のある演技が話題となり、数々のCMやMVに出演。<br>
+                            現在は映画や舞台など、活躍の場を広げている。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center md:text-left">
+                    <a href="#contact" onclick="closeProfile()" class="inline-block bg-brand-dark text-white px-8 py-3 text-sm tracking-widest hover:bg-brand-accent transition-colors shadow-md">
+                        お問い合わせ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script>
         // Icon initialization
@@ -519,6 +568,52 @@
                 header.classList.add('bg-white/90');
             }
         });
+
+        // Modal Functions
+        function openProfile(btn) {
+            const card = btn.closest('.group');
+            const imgSrc = card.querySelector('img').src;
+            const job = card.querySelector('.job-title').innerText;
+            const name = card.querySelector('.talent-name').innerText;
+            const enName = card.querySelector('.en-name').innerText;
+            const desc = card.querySelector('.desc').innerText;
+            
+            // スペックリストの取得 (DL内の情報を再構成)
+            const specsHTML = card.querySelector('.specs').innerHTML;
+
+            // モーダルへセット
+            document.getElementById('modal-img').src = imgSrc;
+            document.getElementById('modal-job').innerText = job;
+            document.getElementById('modal-name').innerText = name;
+            document.getElementById('modal-en-name').innerText = enName;
+            document.getElementById('modal-desc').innerText = desc;
+            
+            // スペックはHTMLごとコピーする (グリッドレイアウトはモーダル側で指定済み)
+            document.getElementById('modal-specs').innerHTML = specsHTML;
+            
+            // モーダルの表示
+            const modal = document.getElementById('profile-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            
+            const modalContent = document.getElementById('modal-content');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+            
+            // スクロールロック
+            document.body.classList.add('modal-open');
+        }
+
+        function closeProfile() {
+            const modal = document.getElementById('profile-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            
+            const modalContent = document.getElementById('modal-content');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            // スクロールロック解除
+            document.body.classList.remove('modal-open');
+        }
     </script>
 </body>
 </html>
