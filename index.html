@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMPLE MANAGEMENT | 清楚系タレント・モデル キャスティング</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Shippori Mincho"', 'serif'],
+                    },
+                    colors: {
+                        'brand-base': '#F8F9FA',   // 全体の背景色（オフホワイト）
+                        'brand-main': '#4A5568',   // メインテキスト
+                        'brand-accent': '#8ECAE6', // アクセント（淡い水色）
+                        'brand-dark': '#2D3748',   // 見出しなど
+                        'brand-gold': '#C5A065',   // 高級感のあるゴールド
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('/api/placeholder/1920/1080')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* カスタムスタイル */
+        .text-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            letter-spacing: 0.2em;
+        }
+        
+        /* フェードインアニメーション */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 画像ホバーエフェクト */
+        .hover-zoom-img {
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .hover-zoom-img {
+            transform: scale(1.05);
+        }
+
+        /* 水彩風の背景装飾 */
+        .watercolor-bg {
+            background-image: radial-gradient(circle at 50% 50%, #E0F7FA 0%, transparent 60%),
+                              radial-gradient(circle at 80% 20%, #F3E5F5 0%, transparent 50%);
+            filter: blur(40px);
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-main bg-brand-base tracking-wide antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="font-serif text-2xl font-medium text-brand-dark tracking-widest group-hover:opacity-70 transition-opacity">SAMPLE</span>
+                <span class="text-xs text-brand-gold mt-1 tracking-widest uppercase">Management</span>
+            </a>
+            
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-500">
+                <a href="#concept" class="hover:text-brand-accent transition-colors">CONCEPT</a>
+                <a href="#talents" class="hover:text-brand-accent transition-colors">TALENTS</a>
+                <a href="#news" class="hover:text-brand-accent transition-colors">NEWS</a>
+                <a href="#company" class="hover:text-brand-accent transition-colors">COMPANY</a>
+            </nav>
+
+            <a href="#contact" class="hidden md:inline-block border border-brand-main text-brand-main px-6 py-2 text-sm hover:bg-brand-main hover:text-white transition-all duration-300">
+                お仕事のご依頼
+            </a>
+            
+            <!-- Mobile Menu Button (Icon only) -->
+            <button class="md:hidden text-gray-600">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed"></div>
+        
+        <!-- Decoration circles -->
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style="animation-delay: 1s;"></div>
+
+        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between h-full pt-20">
+            <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left fade-in-up">
+                <p class="text-brand-gold tracking-[0.3em] text-sm mb-4 font-bold uppercase">Sample Management Office</p>
+                <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-dark leading-tight mb-8">
+                    透明感を、<br>
+                    才能に変えて。
+                </h1>
+                <p class="text-gray-600 leading-loose mb-10 font-light">
+                    凛とした佇まい、飾らない笑顔。<br>
+                    私たちは「清楚」という個性を大切にする<br>
+                    タレントマネジメントオフィスです。<br>
+                    CM、ドラマ、モデルなど、<br class="md:hidden">幅広いシーンで輝く人材をご提案します。
+                </p>
+                <a href="#talents" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-accent hover:border-brand-accent transition-all">
+                    所属タレントを見る <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+            
+            <!-- Hero Image Composition -->
+            <div class="md:w-1/2 relative h-[50vh] md:h-full w-full flex items-center justify-center fade-in-up" style="transition-delay: 0.2s;">
+                <div class="relative w-64 md:w-80 h-80 md:h-[500px]">
+                    <img src="/api/placeholder/600/800" alt="Model" class="w-full h-full object-cover shadow-2xl brightness-105 contrast-95 bg-gray-200">
+                    <!-- Placeholder Text Overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                        <span class="text-4xl font-serif text-gray-500">Main Visual</span>
+                    </div>
+                    
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-white p-4 shadow-lg hidden md:block">
+                        <img src="/api/placeholder/400/400" alt="Model Detail" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 bg-gray-300">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+            <span class="text-[10px] tracking-widest text-vertical h-12">SCROLL</span>
+            <div class="w-[1px] h-12 bg-gray-400"></div>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section id="concept" class="py-24 bg-white relative">
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="max-w-4xl mx-auto text-center fade-in-up">
+                <span class="text-brand-accent font-serif text-lg italic mb-4 block">Our Philosophy</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-dark mb-10 tracking-wider">
+                    心に残る、<br>
+                    清潔感という余韻。
+                </h2>
+                <div class="w-12 h-[1px] bg-brand-gold mx-auto mb-10"></div>
+                <p class="text-gray-600 leading-loose text-justify md:text-center font-light">
+                    情報が溢れる現代において、人々の心に深く残るのは<br class="hidden md:inline">
+                    作り込まれた派手さよりも、内側から滲み出る「透明感」だと私たちは考えます。<br><br>
+                    SAMPLE MANAGEMENTは、育ちの良さや知性を感じさせる<br class="hidden md:inline">
+                    「清楚系」タレント・モデルの発掘と育成に特化。<br>
+                    企業のブランドイメージを損なうことなく、<br class="hidden md:inline">
+                    商品の魅力を最大限に引き立てるパートナーとして。<br>
+                    ドラマや映画のワンシーンに、爽やかな風を吹き込む存在として。<br>
+                    確かな演技力と表現力を兼ね備えた人材を送り出しています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Talents Section: Alternating Layout -->
+    <section id="talents" class="py-24 bg-brand-base relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full watercolor-bg"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-24 fade-in-up">
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-dark tracking-wider mb-2">Talent List</h2>
+                <p class="text-xs text-gray-500 tracking-[0.2em] uppercase">所属タレント一覧</p>
+                <div class="w-8 h-[1px] bg-brand-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="space-y-32">
+                
+                <!-- Talent 1 (Left Image, Right Text) -->
+                <div class="flex flex-col md:flex-row items-center gap-10 md:gap-20 fade-in-up group">
+                    <div class="w-full md:w-1/2">
+                        <div class="relative overflow-hidden aspect-[3/4] shadow-xl bg-white">
+                            <img src="/api/placeholder/600/800" alt="Talent A" class="w-full h-full object-cover hover-zoom-img bg-gray-200">
+                            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-brand-base z-10 hidden md:block"></div> <!-- Decorative cutout -->
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-left">
+                        <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">ACTOR / MODEL</span>
+                        <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">山田 花子</h3>
+                        <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Hanako Yamada</p>
+                        <p class="text-gray-600 leading-loose font-light mb-8 text-justify md:text-left">
+                            透明感あふれる演技で、視聴者を魅了する実力派女優。<br>
+                            ドラマ、映画だけでなく、ナレーションなど声の仕事でも活躍中。<br>
+                            飾らない人柄と、芯の強さを併せ持つ。
+                        </p>
+                        <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6">
+                            <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
+                                <dt class="font-serif text-gray-400 w-20">Height</dt><dd>162cm</dd>
+                            </div>
+                            <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
+                                <dt class="font-serif text-gray-400 w-20">Birthplace</dt><dd>Tokyo</dd>
+                            </div>
+                            <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
+                                <dt class="font-serif text-gray-400 w-20">Hobby</dt><dd>Reading</dd>
+                            </div>
+                        </dl>
+                        <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all">
+                            View Profile <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Talent 2 (Right Image, Left Text) -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-20 fade-in-up group">
+                    <div class="w-full md:w-1/2">
+                        <div class="relative overflow-hidden aspect-[3/4] shadow-xl bg-white">
+                            <img src="/api/placeholder/600/800" alt="Talent B" class="w-full h-full object-cover hover-zoom-img bg-gray-200">
+                             <div class="absolute -top-6 -left-6 w-24 h-24 bg-brand-base z-10 hidden md:block"></div> <!-- Decorative cutout -->
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-left">
+                         <div class="md:flex md:flex-col md:items-end md:text-right">
+                            <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">MODEL</span>
+                            <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">佐藤 美咲</h3>
+                            <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Misaki Sato</p>
+                            <p class="text-gray-600 leading-loose font-light mb-8 text-justify md:text-right">
+                                圧倒的なスタイルと表現力で、数々のファッション誌を飾る。<br>
+                                クールな表情から愛らしい笑顔まで、幅広い表現力が魅力。<br>
+                                ランウェイでの存在感は随一。
+                            </p>
+                            <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6 w-full">
+                                <div class="flex justify-between md:flex-row-reverse md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Height</dt><dd>168cm</dd>
+                                </div>
+                                <div class="flex justify-between md:flex-row-reverse md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Birthplace</dt><dd>Osaka</dd>
+                                </div>
+                                <div class="flex justify-between md:flex-row-reverse md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Hobby</dt><dd>Yoga</dd>
+                                </div>
+                            </dl>
+                            <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all flex-row-reverse">
+                                <i data-lucide="arrow-right" class="w-4 h-4 rotate-180 md:rotate-0"></i> View Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Talent 3 (Left Image, Right Text) -->
+                <div class="flex flex-col md:flex-row items-center gap-10 md:gap-20 fade-in-up group">
+                    <div class="w-full md:w-1/2">
+                        <div class="relative overflow-hidden aspect-[3/4] shadow-xl bg-white">
+                            <img src="/api/placeholder/600/800" alt="Talent C" class="w-full h-full object-cover hover-zoom-img bg-gray-200">
+                             <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-brand-base z-10 hidden md:block"></div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-left">
+                        <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">ACTOR</span>
+                        <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">鈴木 愛理</h3>
+                        <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Airi Suzuki</p>
+                        <p class="text-gray-600 leading-loose font-light mb-8 text-justify md:text-left">
+                            等身大の演技が同世代からの共感を呼ぶ。<br>
+                            舞台での経験も豊富で、確かな演技力が持ち味。<br>
+                            CM、MVなど映像作品への出演も多数。
+                        </p>
+                         <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6">
+                            <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
+                                <dt class="font-serif text-gray-400 w-20">Height</dt><dd>158cm</dd>
+                            </div>
+                            <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
+                                <dt class="font-serif text-gray-400 w-20">Birthplace</dt><dd>Kyoto</dd>
+                            </div>
+                            <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
+                                <dt class="font-serif text-gray-400 w-20">Hobby</dt><dd>Camera</dd>
+                            </div>
+                        </dl>
+                        <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all">
+                            View Profile <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Talent 4 (Right Image, Left Text) -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-20 fade-in-up group">
+                    <div class="w-full md:w-1/2">
+                        <div class="relative overflow-hidden aspect-[3/4] shadow-xl bg-white">
+                            <img src="/api/placeholder/600/800" alt="Talent D" class="w-full h-full object-cover hover-zoom-img bg-gray-200">
+                             <div class="absolute -top-6 -left-6 w-24 h-24 bg-brand-base z-10 hidden md:block"></div>
+                        </div>
+                    </div>
+                     <div class="w-full md:w-1/2 text-center md:text-left">
+                         <div class="md:flex md:flex-col md:items-end md:text-right">
+                            <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">MODEL / REPORTER</span>
+                            <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">田中 陽子</h3>
+                            <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Yoko Tanaka</p>
+                            <p class="text-gray-600 leading-loose font-light mb-8 text-justify md:text-right">
+                                親しみやすいキャラクターと笑顔で、情報番組のリポーターとしても人気。<br>
+                                知的な一面もあり、クイズ番組などでも活躍。<br>
+                                どんな現場も明るくするムードメーカー。
+                            </p>
+                             <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6 w-full">
+                                <div class="flex justify-between md:flex-row-reverse md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Height</dt><dd>165cm</dd>
+                                </div>
+                                <div class="flex justify-between md:flex-row-reverse md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Birthplace</dt><dd>Hokkaido</dd>
+                                </div>
+                                <div class="flex justify-between md:flex-row-reverse md:justify-start gap-4 border-b border-gray-100 pb-2 w-full">
+                                    <dt class="font-serif text-gray-400 w-20 text-left md:text-right">Hobby</dt><dd>Cooking</dd>
+                                </div>
+                            </dl>
+                            <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all flex-row-reverse">
+                                <i data-lucide="arrow-right" class="w-4 h-4 rotate-180 md:rotate-0"></i> View Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Talent 5 (Left Image, Right Text) -->
+                <div class="flex flex-col md:flex-row items-center gap-10 md:gap-20 fade-in-up group">
+                    <div class="w-full md:w-1/2">
+                        <div class="relative overflow-hidden aspect-[3/4] shadow-xl bg-white">
+                            <img src="/api/placeholder/600/800" alt="Talent E" class="w-full h-full object-cover hover-zoom-img bg-gray-200">
+                             <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-brand-base z-10 hidden md:block"></div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-left">
+                        <span class="text-brand-accent tracking-[0.2em] text-xs font-bold mb-3 block">ACTOR</span>
+                        <h3 class="font-serif text-3xl md:text-5xl text-brand-dark mb-4">高橋 優</h3>
+                        <p class="text-sm text-gray-400 uppercase tracking-widest mb-8 font-serif">Yu Takahashi</p>
+                        <p class="text-gray-600 leading-loose font-light mb-8 text-justify md:text-left">
+                            独特の存在感を放つ個性派。<br>
+                            シリアスからコメディまで演じ分ける器用さを持ち、<br>
+                            クリエイターからの指名も多い注目の逸材。
+                        </p>
+                         <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-gray-500 mb-8 max-w-sm mx-auto md:mx-0 border-t border-gray-200 pt-6">
+                            <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
+                                <dt class="font-serif text-gray-400 w-20">Height</dt><dd>160cm</dd>
+                            </div>
+                            <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
+                                <dt class="font-serif text-gray-400 w-20">Birthplace</dt><dd>Fukuoka</dd>
+                            </div>
+                            <div class="flex justify-between md:justify-start gap-4 border-b border-gray-100 pb-2">
+                                <dt class="font-serif text-gray-400 w-20">Hobby</dt><dd>Music</dd>
+                            </div>
+                        </dl>
+                        <a href="#" class="inline-flex items-center gap-2 text-brand-dark border-b border-brand-dark pb-1 text-sm hover:text-brand-accent hover:border-brand-accent transition-all">
+                            View Profile <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="text-center mt-24">
+                 <a href="#" class="inline-block border border-brand-dark px-12 py-4 text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-300 tracking-widest text-sm">
+                    VIEW ALL TALENTS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Clients / Service -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2 fade-in-up">
+                    <img src="/api/placeholder/800/600" alt="Office Meeting" class="w-full h-auto grayscale opacity-80 shadow-xl bg-gray-200">
+                </div>
+                <div class="w-full md:w-1/2 fade-in-up" style="transition-delay: 0.2s;">
+                    <h2 class="font-serif text-3xl text-brand-dark mb-6 tracking-wider">制作・キャスティング担当者様へ</h2>
+                    <p class="text-gray-600 mb-8 leading-loose font-light">
+                        テレビ番組、CM、映画、WEB広告、イベントなど、<br>
+                        あらゆるシーンにおけるキャスティングを承っております。<br><br>
+                        急なスケジュールのご相談や、<br>
+                        オーディション形式での選考にも柔軟に対応可能です。<br>
+                        コンポジットの送付依頼もお気軽にお申し付けください。<br>
+                        企画の意図を汲み取り、最適な人材をご提案いたします。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 border border-gray-100 text-center">
+                            <span class="block text-brand-accent mb-2"><i data-lucide="tv" class="w-6 h-6 mx-auto"></i></span>
+                            <span class="text-sm text-gray-600 font-medium">TV / Drama</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 border border-gray-100 text-center">
+                            <span class="block text-brand-accent mb-2"><i data-lucide="video" class="w-6 h-6 mx-auto"></i></span>
+                            <span class="text-sm text-gray-600 font-medium">CM / Movie</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 border border-gray-100 text-center">
+                            <span class="block text-brand-accent mb-2"><i data-lucide="camera" class="w-6 h-6 mx-auto"></i></span>
+                            <span class="text-sm text-gray-600 font-medium">Model / Magazine</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 border border-gray-100 text-center">
+                            <span class="block text-brand-accent mb-2"><i data-lucide="mic-2" class="w-6 h-6 mx-auto"></i></span>
+                            <span class="text-sm text-gray-600 font-medium">Event / Reporter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section (Simple List) -->
+    <section id="news" class="py-24 bg-brand-base">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="font-serif text-3xl text-center text-brand-dark mb-12 tracking-wider">Latest News</h2>
+            <div class="bg-white p-8 shadow-sm fade-in-up">
+                <article class="border-b border-gray-100 py-4 flex flex-col md:flex-row gap-2 md:gap-8 items-start md:items-center hover:bg-gray-50 transition-colors cursor-pointer group">
+                    <time class="text-xs text-gray-400 font-mono">2023.10.20</time>
+                    <span class="bg-brand-dark text-white text-[10px] px-2 py-0.5 min-w-[60px] text-center">出演情報</span>
+                    <h3 class="text-sm md:text-base text-gray-700 group-hover:text-brand-accent transition-colors">山田花子がドラマ「〇〇〇〇」第3話にゲスト出演いたします。</h3>
+                </article>
+                <article class="border-b border-gray-100 py-4 flex flex-col md:flex-row gap-2 md:gap-8 items-start md:items-center hover:bg-gray-50 transition-colors cursor-pointer group">
+                    <time class="text-xs text-gray-400 font-mono">2023.10.15</time>
+                    <span class="bg-brand-dark text-white text-[10px] px-2 py-0.5 min-w-[60px] text-center">出演情報</span>
+                    <h3 class="text-sm md:text-base text-gray-700 group-hover:text-brand-accent transition-colors">田中陽子が「△△製薬」の新CMキャラクターに決定いたしました。</h3>
+                </article>
+                <article class="border-b border-gray-100 py-4 flex flex-col md:flex-row gap-2 md:gap-8 items-start md:items-center hover:bg-gray-50 transition-colors cursor-pointer group">
+                    <time class="text-xs text-gray-400 font-mono">2023.10.01</time>
+                    <span class="bg-brand-gold text-white text-[10px] px-2 py-0.5 min-w-[60px] text-center">お知らせ</span>
+                    <h3 class="text-sm md:text-base text-gray-700 group-hover:text-brand-accent transition-colors">新人タレントオーディションの募集を開始いたしました。</h3>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute right-0 bottom-0 w-64 h-64 bg-brand-accent/10 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-6 text-center relative z-10 fade-in-up">
+            <h2 class="font-serif text-3xl md:text-4xl text-brand-dark mb-6 tracking-wider">Contact Us</h2>
+            <p class="text-gray-600 mb-10 font-light">
+                出演依頼、取材、オーディションなどのお問い合わせは<br>
+                以下のフォームより承っております。
+            </p>
+            
+            <a href="https://forms.google.com/your-form-url" target="_blank" class="inline-block bg-brand-dark text-white font-medium px-12 py-4 tracking-widest hover:bg-brand-accent transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                お問い合わせフォームへ
+            </a>
+            
+            <p class="text-xs text-gray-400 mt-6">
+                ※外部のGoogleフォームへ移動します。<br>
+                ※内容により返信にお時間をいただく場合がございます。
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white py-12 border-t border-gray-700">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <span class="font-serif text-2xl tracking-widest block mb-2">SAMPLE</span>
+                <span class="text-xs text-gray-400 tracking-[0.2em] uppercase">Management Office</span>
+            </div>
+            
+            <div class="flex gap-6 text-xs text-gray-400 tracking-wide">
+                <a href="#" class="hover:text-white transition-colors">会社概要</a>
+                <a href="#" class="hover:text-white transition-colors">プライバシーポリシー</a>
+                <a href="#" class="hover:text-white transition-colors">お問い合わせ</a>
+            </div>
+
+            <p class="text-xs text-gray-500 font-mono tracking-wider">
+                &copy; 2023 SAMPLE MANAGEMENT.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Icon initialization
+        lucide.createIcons();
+
+        // Fade In Animation
+        const fadeElements = document.querySelectorAll('.fade-in-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Header Transparency on Scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md', 'bg-white/95');
+                header.classList.remove('bg-white/90');
+            } else {
+                header.classList.remove('shadow-md', 'bg-white/95');
+                header.classList.add('bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>
